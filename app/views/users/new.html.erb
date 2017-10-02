@@ -1,0 +1,27 @@
+<!-- <h1>Users#new</h1>
+<p>Find me in app/views/users/new.html.erb</p> -->
+
+<h1>Make an Account!</h1>
+
+<%= render 'form', user: @user %>
+
+<%= link_to 'Back', users_path %>
+
+
+
+<!-- <%= form_for @user do |f| %>
+  <%= f.label :first_name %>
+  <%=f.text_field :first_name %>
+  <br>
+  <%=f.label :last_name  %>
+  <%=f.text_field :last_name %>
+  <br>
+  <%=f.label :email %>
+  <%= f.text_field :email %>
+  <br>
+  <%= f.label :phone %>
+  <%= f.text_field :phone %>
+
+  <%= f.submit %>
+
+<% end %> -->

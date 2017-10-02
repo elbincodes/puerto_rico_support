@@ -1,0 +1,12 @@
+<!-- <h1>Posts#index</h1>
+<p>Find me in app/views/posts/index.html.erb</p> -->
+<hr>
+<h1>Here are all the Posts!</h1>
+<hr>
+<p>Click on a post to see their page</p>
+<% @posts.each do |post|%>
+<br>
+
+<button class="ui inverted red button"><%= link_to "#{post.title} by #{User.find(post.user_id).to_s}", post_path(post) %></button>
+
+<%end %>
