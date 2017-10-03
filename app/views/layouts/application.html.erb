@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Puerto Rico Suppor tWeb</title>
+    <title>Puerto Rico Support Web</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -11,7 +11,7 @@
   <body>
     <div id="user_header">
     <% if current_user %>
-    Logged in as <%= current_user.email %>.
+    Logged in as <%= current_user.to_s %>.
     <%= link_to "Log Out", logout_path %>
     <% else %>
     <%= link_to "Sign Up", user_signup_path %> or
@@ -26,4 +26,10 @@
 
     <%= yield %>
   </body>
+
+  <footer>
+    
+    <hr>
+    <%= link_to 'All Users', users_path %> |
+  <%= link_to 'All Posts', posts_path %></footer>
 </html>

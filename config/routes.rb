@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'page/index'
+
   resources :users, except: [:new]
   resources :posts
-  resources :comments
+  resources :comments, except: [:new]
   post 'posts/comments/new', to: 'comments#new'
   # resources :sessions, only: [:new, :create, :destroy]
   #  we dont need this because its below
@@ -14,7 +16,7 @@ Rails.application.routes.draw do
   # get 'user_login', to: 'sessions#create'
 
   # get 'post/index'
-  root 'posts#index'
+  root 'page#index'
   # get rid or change this
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -11,13 +11,14 @@ class PostsController < ApplicationController
   end
 
   def show
-    set_post
+    get_post
+
+    @verified = (@post.user_id == current_user.id)
   end
 
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-
     if @post.save
       redirect_to post_path(@post), notice: 'Post was successfully created.'
     else
@@ -26,16 +27,18 @@ class PostsController < ApplicationController
   end
 
   def edit
-    set_post
+    get_post
   end
 
   def destory
   end
 
   def update
-    set_post
-    if @post.update(post_params)
+    get_post
+    if @post.update(post_params) && @post.user_id == current_user.id
       redirect_to post_path(@post), notice: 'Post was successfully updated.'
+    elsif @post.user_id != current_user.id
+      redirect_to post_path(@post), notice: 'Post can only be updated by author.'
     else
       render :edit
     end
@@ -45,7 +48,7 @@ class PostsController < ApplicationController
 
   private
 
-  def set_post
+  def get_post
     @post = Post.find(params[:id])
   end
 

@@ -33,6 +33,8 @@
 
 
 <%= link_to 'All Users', users_path %> |
-<%= link_to 'All Posts', root_path %> |
-<%= link_to 'Edit Post', edit_post_path(@post) %> |
+<%= link_to 'All Posts', posts_path %> |
 <%= link_to 'Create Post', new_post_path %>
+<% if @verified %>
+|  <%= link_to 'Edit Post', edit_post_path(@post) %>
+<% end %>
