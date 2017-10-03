@@ -1,2 +1,8 @@
 <h1>Comments#edit</h1>
-<p>Find me in app/views/comments/edit.html.erb</p>
+<p>Find me in app/views/posts/edit.html.erb</p>
+
+<h1>Edit a Comment!</h1>
+
+<%= render 'form', comment: @comment %>
+
+<%= link_to 'Back to Post', post_path(@post) %> |

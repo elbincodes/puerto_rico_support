@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+
+  # before_action :requireSameUser, only: [:edit, :update, :destroy]
+
   def index
     @posts = Post.all
   end
@@ -14,6 +17,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+
     if @post.save
       redirect_to post_path(@post), notice: 'Post was successfully created.'
     else
@@ -37,6 +41,8 @@ class PostsController < ApplicationController
     end
   end
 
+
+
   private
 
   def set_post
@@ -47,5 +53,12 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :content, :user_id)
   end
 
+  #
+  # def requireSameUser
+  #   if current_user != @post.user
+  #     redirect_to post_path(@post), notice: 'You can only edit or delete your own items'
+  #
+  #   end
+  # end
 
 end

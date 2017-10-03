@@ -16,6 +16,22 @@
   <%= User.find(@post.user_id).to_s %>
 </p>
 
+<hr>
+  <% @post.comments.each do |comment|%>
+    <%= comment.content %>
+    Written by: <%= User.find(comment.user_id).to_s %>
+  <hr>
+<% end %>
+
+
+<%= form_for(Comment.new) do |f| %>
+  <%= f.hidden_field :post_id, :value => @post.id %>
+  <%= f.text_area :content, size: "60x12" %>
+  <%= f.submit "Create Comment" %>
+<% end %>
+
+
+
 <%= link_to 'All Users', users_path %> |
 <%= link_to 'All Posts', root_path %> |
 <%= link_to 'Edit Post', edit_post_path(@post) %> |

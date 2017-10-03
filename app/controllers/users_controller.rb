@@ -44,7 +44,8 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :phone, :password, :password_digest)
+    params.require(:user).permit(:first_name, :last_name, :email, :phone, :password, :password_confirmation)
+    #  we had :password_digest in permit before but passwords were not matcing.
   end
 
 end

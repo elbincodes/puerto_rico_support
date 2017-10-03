@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   resources :users, except: [:new]
   resources :posts
   resources :comments
-  # resources :sessions, only: [:new, :create, :destory]
+  post 'posts/comments/new', to: 'comments#new'
+  # resources :sessions, only: [:new, :create, :destroy]
   #  we dont need this because its below
 
   get 'user_signup', to: 'users#new'
