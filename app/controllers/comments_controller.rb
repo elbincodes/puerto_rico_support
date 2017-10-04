@@ -12,10 +12,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-    # byebug
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
-    # @comment.post_id = current_post.id
     if @comment.save
       redirect_to post_path(current_post), notice: 'Comment was successfully created.'
     else
@@ -28,6 +26,9 @@ class CommentsController < ApplicationController
   end
 
   def destory
+    set_comment
+    @comment.destroy
+    redirect_to posts_path, notice: 'Comment deleted!'
   end
 
   def update
@@ -51,11 +52,6 @@ class CommentsController < ApplicationController
 
   def current_post
     Post.find_by_id(comment_params[:post_id])
-    # I think: this gets us the current user that is logged in. this can also be nil
   end
-
-  # def current_organization
-  #   Organization.find_by_id(comment_params[:organization_id])
-  # end
 
 end

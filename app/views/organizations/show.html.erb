@@ -12,3 +12,7 @@
   <strong>Information:</strong>
   <%= @organization.info %>
 </p>
+<% if @verified %>
+<%= link_to 'Edit Organization', edit_organization_path(@organization) %>
+<% end %>
+<hr>

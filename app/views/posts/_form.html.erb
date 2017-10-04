@@ -27,7 +27,7 @@
 
   <% if current_organizations %>
     <div class="field">
-      <%= form.collection_select(:id, current_organizations, :id, :name) %>
+      <%= form.collection_select(:organization_id, current_organizations, :id, :name) %>
     </div>
   <% end %>
 

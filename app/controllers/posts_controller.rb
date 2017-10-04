@@ -18,6 +18,9 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    if current_organizations
+      @post.organization = UserOrganization.where(user_id: current_user.id, organization_id: params[:post][:organization_id], admin: true).first.organization
+    end
     if @post.save
       redirect_to post_path(@post), notice: 'Post was successfully created.'
     else
@@ -30,6 +33,9 @@ class PostsController < ApplicationController
   end
 
   def destory
+    set_post
+    @post.destroy
+    redirect_to posts_path, notice: 'Post deleted!'
   end
 
   def update

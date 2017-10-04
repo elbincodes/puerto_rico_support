@@ -10,12 +10,11 @@ class OrganizationsController < ApplicationController
 
   def show
     set_organization
+    @verified = (@organization.users.where(id: current_user.id).any?)
   end
 
   def create
     @organization = Organization.new(organization_params)
-    # byebug
-    # @organization.user = current_user
     if @organization.save
       UserOrganization.create(user_id: current_user.id, organization_id: @organization.id, admin: true)
       redirect_to organization_path(@organization), notice: 'Organization was successfully created.'
