@@ -1,2 +1,8 @@
-<h1>Organizations#new</h1>
-<p>Find me in app/views/organizations/new.html.erb</p>
+<!-- <h1>Organizations#new</h1>
+<p>Find me in app/views/organizations/new.html.erb</p> -->
+
+<h1>Make an Organization!</h1>
+
+<%= render 'form', organization: @organization %>
+
+<%= link_to 'Back', organizations_path %>

@@ -14,9 +14,10 @@ class OrganizationsController < ApplicationController
 
   def create
     @organization = Organization.new(organization_params)
-    @organization.user = current_user
+    # byebug
+    # @organization.user = current_user
     if @organization.save
-
+      UserOrganization.create(user_id: current_user.id, organization_id: @organization.id, admin: true)
       redirect_to organization_path(@organization), notice: 'Organization was successfully created.'
     else
       render :new

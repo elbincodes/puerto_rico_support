@@ -1,18 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'organizations/index'
 
-  get 'organizations/new'
 
-  get 'organizations/create'
-
-  get 'organizations/show'
-
-  get 'organizations/edit'
-
-  get 'organizations/update'
-
-  get 'organizations/destroy'
+  resources :organizations
 
   get 'page/index'
 
