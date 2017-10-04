@@ -4,7 +4,8 @@
 <h1>Here are all the Posts!</h1>
 <hr>
 <h4>Click on a post to see their page</h4>
-<% @posts.each do |post|%>
+
+<center><% @posts.each do |post|%></center>
 <br>
 
 <button class="ui inverted red button"><%= link_to "#{post.title} by #{User.find(post.user_id).to_s}", post_path(post) %></button>
