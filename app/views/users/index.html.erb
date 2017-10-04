@@ -1,13 +1,14 @@
 <!-- <h1>Users#index</h1>
 <p>Find me in app/views/users/index.html.erb</p> -->
 <hr>
-<h1>Here are all the Users!</h1>
+<h1>User Page</h1>
 <hr>
-<p>Click on a user to see their page</p>
+<h4>Select a user to view their profile.</h4>
+<hr>
+
 <% @users.each do |user|%>
-<br>
-
-<button class="ui inverted red button"><%= link_to user.to_s, user_path(user) %></button>
-
-
+  <br>
+  <button class="ui inverted red button", size="massive" ><%= link_to user.to_s, user_path(user) %></button>
 <%end %>
+
+<br>

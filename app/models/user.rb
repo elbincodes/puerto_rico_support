@@ -5,8 +5,6 @@ class User < ApplicationRecord
   has_many :comments
   has_many :user_organizations
   has_many :organizations, through: :user_organizations
-  has_many :owned_organizations, class_name: 'Organization', foreign_key: "admin_id"
-
 
   validates :first_name, presence: true
   validates :last_name, presence: true

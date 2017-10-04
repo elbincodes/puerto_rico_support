@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   def show
     get_post
 
-    @verified = (@post.user_id == current_user.id)
+    @verified = (@post.user == current_user)
   end
 
   def create
@@ -56,12 +56,5 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :content, :user_id)
   end
 
-  #
-  # def requireSameUser
-  #   if current_user != @post.user
-  #     redirect_to post_path(@post), notice: 'You can only edit or delete your own items'
-  #
-  #   end
-  # end
 
 end

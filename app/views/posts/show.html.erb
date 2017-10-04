@@ -15,26 +15,26 @@
   <strong>User:</strong>
   <%= User.find(@post.user_id).to_s %>
 </p>
-
+<% if @verified %>
+<%= link_to 'Edit Post', edit_post_path(@post) %>
+<% end %>
+<hr>
+<h3>Comments:</h3>
 <hr>
   <% @post.comments.each do |comment|%>
     <%= comment.content %>
+    <br>
     Written by: <%= User.find(comment.user_id).to_s %>
-  <hr>
-<% end %>
+    <% if comment.user == current_user %>
+      <%= link_to 'Edit Comment', edit_comment_path(comment) %>
+    <% end %>
+    <hr>
+  <% end %>
 
-
-<%= form_for(Comment.new) do |f| %>
-  <%= f.hidden_field :post_id, :value => @post.id %>
-  <%= f.text_area :content, size: "60x12" %>
-  <%= f.submit "Create Comment" %>
-<% end %>
-
-
-
-<%= link_to 'All Users', users_path %> |
-<%= link_to 'All Posts', posts_path %> |
-<%= link_to 'Create Post', new_post_path %>
-<% if @verified %>
-|  <%= link_to 'Edit Post', edit_post_path(@post) %>
+<% if current_user %>
+  <%= form_for(Comment.new) do |f| %>
+    <%= f.hidden_field :post_id, :value => @post.id %>
+    <%= f.text_area :content, size: "60x12" %>
+    <%= f.submit "Create Comment" %>
+  <% end %>
 <% end %>

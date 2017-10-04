@@ -28,8 +28,15 @@
   </body>
 
   <footer>
-    
+
     <hr>
+    <%= link_to 'Home', root_path %> |
     <%= link_to 'All Users', users_path %> |
-  <%= link_to 'All Posts', posts_path %></footer>
+    <%= link_to 'All Posts', posts_path %>
+    <% if current_user %>
+    |  <%= link_to 'Create Post', new_post_path %>
+    |  <%= link_to 'Edit My Profile', edit_user_path(current_user) %>
+    <% end %>
+
+  </footer>
 </html>
