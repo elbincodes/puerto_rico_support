@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <title>Puerto Rico Support Web</title>
     <%= csrf_meta_tags %>
 
@@ -9,9 +10,11 @@
   </head>
 
   <body>
+
+    <%= render partial: "shared/navbar" %>
     <div id="user_header">
     <% if current_user %>
-    Logged in as <%= current_user.to_s %>.
+    <font size="4" face="verdana" color="red">Logged in as <%= current_user.to_s %></font>
     <%= link_to "Log Out", logout_path %>
     <% else %>
     <%= link_to "Sign Up", user_signup_path %> or
