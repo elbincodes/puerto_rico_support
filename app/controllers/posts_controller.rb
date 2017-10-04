@@ -11,8 +11,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    get_post
-
+    set_post
     @verified = (@post.user == current_user)
   end
 
@@ -27,14 +26,14 @@ class PostsController < ApplicationController
   end
 
   def edit
-    get_post
+    set_post
   end
 
   def destory
   end
 
   def update
-    get_post
+    set_post
     if @post.update(post_params) && @post.user_id == current_user.id
       redirect_to post_path(@post), notice: 'Post was successfully updated.'
     elsif @post.user_id != current_user.id
@@ -48,13 +47,16 @@ class PostsController < ApplicationController
 
   private
 
-  def get_post
+  def set_post
     @post = Post.find(params[:id])
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :user_id)
+    params.require(:post).permit(:title, :content, :user_id, :organization_id)
   end
 
+  # def get_organization
+  #   Organization.find_by_id(post_params[:organization_id])
+  # end
 
 end

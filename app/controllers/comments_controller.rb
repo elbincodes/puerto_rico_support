@@ -46,7 +46,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:content, :user_id, :post_id, :crazy)
+    params.require(:comment).permit(:content, :user_id, :post_id, :organization_id)
   end
 
   def current_post
@@ -54,5 +54,8 @@ class CommentsController < ApplicationController
     # I think: this gets us the current user that is logged in. this can also be nil
   end
 
+  # def current_organization
+  #   Organization.find_by_id(comment_params[:organization_id])
+  # end
 
 end

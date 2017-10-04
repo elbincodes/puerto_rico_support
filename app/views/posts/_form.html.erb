@@ -25,6 +25,12 @@
     <%= form.text_area :content, id: :post_content, size: "60x12" %>
   </div>
 
+  <% if current_organizations %>
+    <div class="field">
+      <%= form.collection_select(:id, current_organizations, :id, :name) %>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>

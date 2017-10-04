@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20171003221353) do
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.integer "post_id"
+    t.integer "organization_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
@@ -24,7 +25,6 @@ ActiveRecord::Schema.define(version: 20171003221353) do
     t.string "name"
     t.string "website"
     t.text "info"
-    t.integer "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20171003221353) do
     t.string "title"
     t.text "content"
     t.integer "user_id"
+    t.integer "organization_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 20171003221353) do
   create_table "user_organizations", force: :cascade do |t|
     t.integer "user_id"
     t.integer "organization_id"
+    t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
