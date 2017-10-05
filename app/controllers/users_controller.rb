@@ -27,6 +27,8 @@ class UsersController < ApplicationController
 
   def destroy
     set_user
+    Post.where(user_id: @user.id).destroy_all
+    Comment.where(user_id: @user.id).destroy_all
     @user.destroy
     redirect_to root_path, notice: 'Account deleted!'
   end

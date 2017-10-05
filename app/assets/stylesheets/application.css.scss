@@ -16,3 +16,18 @@
 
 
 @import "bootstrap";
+code {
+  background: #E6E6FA;
+  border-radius: 6px;
+  color: #000;
+  display: block;
+  font: 20px/30px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
+  padding: 24px 15px;
+  text-align: center;
+}
+header,
+body,
+aside,
+footer {
+  margin-bottom: 0;
+}

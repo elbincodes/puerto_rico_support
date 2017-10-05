@@ -1,7 +1,7 @@
 <!DOCTYPE html>
+
 <html>
   <head>
-
     <title>Puerto Rico Support Web</title>
     <%= csrf_meta_tags %>
 
@@ -10,11 +10,19 @@
   </head>
 
   <body>
+    <code>
+
+  <style>
+  body {
+    background-color: #E6E6FA
+  }
+  </style>
 
     <%= render partial: "shared/navbar" %>
     <div id="user_header">
+
     <% if current_user %>
-    <font size="4" face="verdana" color="red">Logged in as <%= current_user.to_s %></font>
+    <font size="4" face="verdana" color="black">Logged in as <%= current_user.to_s %></font>
     <%= link_to "Log Out", logout_path %>
     <% else %>
     <%= link_to "Sign Up", user_signup_path %> or
@@ -28,10 +36,11 @@
     <% end %>
 
     <%= yield %>
+</code>
   </body>
 
   <footer>
-
+<code>
     <hr>
     <%= link_to 'Home', root_path %> |
     <%= link_to 'All Users', users_path %> |
@@ -42,6 +51,6 @@
     |  <%= link_to 'Create Organization', new_organization_path %>
     |  <%= link_to 'Edit My Profile', edit_user_path(current_user) %>
     <% end %>
-
+</code>
   </footer>
 </html>

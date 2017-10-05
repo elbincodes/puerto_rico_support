@@ -23,7 +23,9 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    set_comment
+    if current_user
+      set_comment
+    end
   end
 
   def destroy
