@@ -28,10 +28,16 @@ class PostsController < ApplicationController
 
   def edit
     set_post
+    if @post.user != current_user
+      redirect_to post_path(@post), notice: "UNAUTHORIZED ACCESS: This is NOT your post!!!"
+    end
   end
 
   def destroy
     set_post
+    # if @post.user != current_user
+    #   redirect_to posts_path(@post), notice: "UNAUTHORIZED ACCESS: This is NOT your post!!!"
+    # end
     @post.destroy
     redirect_to posts_path, notice: 'Post deleted!'
   end

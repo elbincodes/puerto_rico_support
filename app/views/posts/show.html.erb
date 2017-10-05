@@ -48,6 +48,7 @@
   <%= form_for(Comment.new) do |f| %>
     <%= f.hidden_field :post_id, :value => @post.id %>
     <%= f.text_area :content, size: "60x12" %>
+    <br>
     <%= f.submit "Create Comment" %>
   <% end %>
 <% end %>

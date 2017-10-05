@@ -27,10 +27,16 @@ class OrganizationsController < ApplicationController
 
   def edit
     set_organization
+    if @organization.users.exclude?(current_user)
+      redirect_to organization_path(@organization), notice: "UNAUTHORIZED ACCESS: This is NOT your organization!!!"
+    end
   end
 
   def destroy
     set_organization
+    # if @organization.users.exclude?(current_user)
+    #   redirect_to organization_path(@organization), notice: "UNAUTHORIZED ACCESS: This is NOT your organization!!!"
+    # end
     @organization.destroy
     redirect_to organizations_path, notice: "Organization was successfully deleted."
   end

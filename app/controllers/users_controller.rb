@@ -23,10 +23,16 @@ class UsersController < ApplicationController
 
   def edit
     set_user
+    if @user != current_user
+      redirect_to users_path(@user), notice: "UNAUTHORIZED ACCESS: This is NOT your account!!!"
+    end
   end
 
   def destroy
     set_user
+    # if @user != current_user
+    #   redirect_to users_path(@user), notice: "UNAUTHORIZED ACCESS: This is NOT your account!!!"
+    # end
     Post.where(user_id: @user.id).destroy_all
     Comment.where(user_id: @user.id).destroy_all
     @user.destroy

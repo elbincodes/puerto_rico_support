@@ -23,13 +23,17 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    if current_user
-      set_comment
+    set_comment
+    if @comment.user != current_user
+      redirect_to @comment.post, notice: "UNAUTHORIZED ACCESS: This is NOT your comment!!!"
     end
   end
 
   def destroy
     set_comment
+    # if @comment.user != current_user
+    #   redirect_to @comment.post, notice: "UNAUTHORIZED ACCESS: This is NOT your comment!!!"
+    # end
     @comment.destroy
     redirect_to posts_path, notice: 'Comment deleted!'
   end
