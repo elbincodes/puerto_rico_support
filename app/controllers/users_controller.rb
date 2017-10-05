@@ -25,10 +25,10 @@ class UsersController < ApplicationController
     set_user
   end
 
-  def destory
+  def destroy
     set_user
     @user.destroy
-    redirect_to users_path, notice: 'Account deleted!'
+    redirect_to root_path, notice: 'Account deleted!'
   end
 
   def update

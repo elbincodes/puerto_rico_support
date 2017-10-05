@@ -4,5 +4,11 @@
 
 <%= render 'form', organization: @organization %>
 
+<hr>
+<%= form_for @organization, method: :delete do |f| %>
+  <%= f.submit "Delete organization" %><br/>
+<% end %>
+<hr>
+
 <%= link_to 'Back to All Organizations', organizations_path %>
 <%= link_to 'My Organization', organization_path(@organization) %>

@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+
   def index
     @comments = Comment.all
   end
@@ -25,7 +26,7 @@ class CommentsController < ApplicationController
     set_comment
   end
 
-  def destory
+  def destroy
     set_comment
     @comment.destroy
     redirect_to posts_path, notice: 'Comment deleted!'

@@ -6,6 +6,10 @@
 
 
 <%= render 'form', user: @user %>
-
+<hr>
+<%= form_for @user, method: :delete do |f| %>
+  <%= f.submit "Delete user" %><br/>
+<% end %>
+<hr>
 <%= link_to 'My Profile', @user %>
 <%= link_to 'Back', users_path %>

@@ -10,7 +10,9 @@ class OrganizationsController < ApplicationController
 
   def show
     set_organization
-    @verified = (@organization.users.where(id: current_user.id).any?)
+    if current_user
+      @verified = (@organization.users.where(id: current_user.id).any?)
+    end
   end
 
   def create
@@ -27,7 +29,10 @@ class OrganizationsController < ApplicationController
     set_organization
   end
 
-  def destory
+  def destroy
+    set_organization
+    @organization.destroy
+    redirect_to organizations_path, notice: "Organization was successfully deleted."
   end
 
   def update
