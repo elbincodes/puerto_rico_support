@@ -11,14 +11,14 @@ class OrganizationsController < ApplicationController
   def show
     set_organization
     if current_user
-      @verified = (@organization.users.where(id: current_user.id).any?)
+      @verified = Connection.where(user_id: current_user.id, admin: true).any?
     end
   end
 
   def create
     @organization = Organization.new(organization_params)
     if @organization.save
-      UserOrganization.create(user_id: current_user.id, organization_id: @organization.id, admin: true)
+      Connection.create(user_id: current_user.id, organization_id: @organization.id, admin: true)
       redirect_to organization_path(@organization), notice: 'Organization was successfully created.'
     else
       render :new
@@ -27,7 +27,7 @@ class OrganizationsController < ApplicationController
 
   def edit
     set_organization
-    if @organization.users.exclude?(current_user)
+    if @organization.users.exclude?(current_user) && current_user.connection.admin == false
       redirect_to organization_path(@organization), notice: "UNAUTHORIZED ACCESS: This is NOT your organization!!!"
     end
   end

@@ -10,13 +10,13 @@ class ApplicationController < ActionController::Base
     end
 
     def current_organizations
-      orgs = UserOrganization.where({:user_id => current_user.id, :admin => true}).map {|x| x.organization}
+      orgs = Connection.where({:user_id => current_user.id, :admin => true}).map {|x| x.organization}
       (orgs.length > 0) ? orgs : false
-      # @user_organizations = Organization.all
-      # if @user_organizations.length == 0
+      # @connections = Organization.all
+      # if @connections.length == 0
       #   return false
       # end
-      # @user_organizations.select do |user_org|
+      # @connections.select do |user_org|
       #   user_org.user == current_user && user_org.admin == true
       # end
     end

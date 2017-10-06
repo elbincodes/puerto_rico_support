@@ -3,8 +3,8 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :comments
-  has_many :user_organizations
-  has_many :organizations, through: :user_organizations
+  has_many :connections
+  has_many :organizations, through: :connections
 
   validates :first_name, presence: true
   validates :last_name, presence: true

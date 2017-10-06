@@ -15,4 +15,13 @@
 <% if @verified %>
 <%= link_to 'Edit Organization', edit_organization_path(@organization) %>
 <% end %>
+<% if current_user && current_user.organizations.exclude?(@organization) %>
+  <hr>
+  <h3><%= link_to "Connect with Us!", :controller => :connections, :action => :create, :id => @organization.id %></h3>
+<% end %>
 <hr>
+<h2>Users Connected to Us:</h2>
+<% @organization.connections.each do |connection| %>
+  <%= link_to connection.user.to_s, user_path(connection.user) %>
+  <br>
+<% end %>
