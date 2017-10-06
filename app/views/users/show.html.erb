@@ -25,3 +25,13 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
+<hr>
+<h2>Organizations Connected to Me:</h2>
+<% @user.organizations.each do |organization| %>
+  <% organization.connections.each do |connection| %>
+    <% if connection.user == @user %>
+      <%= link_to connection.organization.name, organization_path(connection.organization) %>
+  <br>
+    <% end %>
+  <% end %>
+<% end %>
